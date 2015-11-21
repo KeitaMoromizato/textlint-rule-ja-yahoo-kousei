@@ -3,17 +3,16 @@ textlint rule that using Yahoo Proofreading API.
 
 ## Installation
 
-TODO
+```
+npm install textlint-rule-ja-yahoo-kousei
+```
 
 ## Usage
-
-TODO
 
 ```
 npm install -g textlint textlint-rule-ja-yahoo-kousei
 export YAHOO_APP_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-textlint --rule no-start-duplicated-conjunction README.md
-Config
+textlint --rule textlint-rule-ja-yahoo-kousei README.md
 ```
 
 ## Config
