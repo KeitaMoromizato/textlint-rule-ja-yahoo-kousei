@@ -11,6 +11,7 @@ TODO
 
 ```
 npm install -g textlint textlint-rule-ja-yahoo-kousei
+export YAHOO_APP_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 textlint --rule no-start-duplicated-conjunction README.md
 Config
 ```
