@@ -1,0 +1,38 @@
+{
+  "name": "textlint-rule-ja-yahoo-kousei",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KeitaMoromizato/textlint-rule-ja-yahoo-kousei.git"
+  },
+  "version": "0.0.1",
+  "description": "textlint rule that using Yahoo Proofreading API",
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps",
+    "watch": "babel src --out-dir lib --watch --source-maps",
+    "prepublish": "npm run --if-present build",
+    "test": "mocha"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "keywords": [
+    "textlint"
+  ],
+  "bugs": {
+    "url": "https://github.com/KeitaMoromizato/textlint-rule-ja-yahoo-kousei/issues"
+  },
+  "author": "Keita Moromizato",
+  "email": "keita_moromizato@relationsgroup.co.jp",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.34",
+    "textlint": "^5.0.2"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "request": "^2.67.0",
+    "xml2js": "^0.4.15"
+  }
+}
