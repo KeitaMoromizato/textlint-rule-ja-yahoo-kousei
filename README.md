@@ -32,9 +32,9 @@ Config
 TODO
 
 ## Tests
-TODO
 
 ```
+export YAHOO_APP_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 npm test
 ```
 
