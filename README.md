@@ -22,7 +22,9 @@ Config
 {
     "rules": {
         "textlint-rule-ja-yahoo-kousei": {
-
+          'ignores': {
+            '用字':['彼方']
+          }
         }
     }
 }
