@@ -12,7 +12,7 @@
     "prepublish": "npm run --if-present build",
     "test": "mocha"
   },
-  "main": "lib/index.js",
+  "main": "lib/ja-yahoo-kousei.js",
   "files": [
     "lib",
     "src"
@@ -28,6 +28,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.34",
+    "espower-babel": "^3.3.0",
+    "mocha": "^2.3.4",
+    "power-assert": "^1.2.0",
     "textlint": "^5.0.2"
   },
   "dependencies": {
