@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/KeitaMoromizato/textlint-rule-ja-yahoo-kousei.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "textlint rule that using Yahoo Proofreading API",
   "scripts": {
     "build": "babel src --out-dir lib --source-maps",
