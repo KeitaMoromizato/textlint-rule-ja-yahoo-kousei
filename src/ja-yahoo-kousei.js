@@ -28,6 +28,10 @@ function fetchProofreading(text) {
 }
 
 export default function(context, options = {}) {
+  if (!process.env.YAHOO_APP_ID) {
+    throw new Error(`YAHOO_APP_ID is not set.`);
+  }
+
   options = assign({}, defaultOptions, options);
   let {Syntax, getSource, report, RuleError} = context;
 
@@ -37,6 +41,9 @@ export default function(context, options = {}) {
         const paragraph = getSource(node);
 
         fetchProofreading(paragraph).then(json => {
+          if (json.Error) {
+            return reject(new Error(json.Error.Message[0]));
+          }
 
           if (json && json.ResultSet.Result) {
             json.ResultSet.Result.forEach(result => {
