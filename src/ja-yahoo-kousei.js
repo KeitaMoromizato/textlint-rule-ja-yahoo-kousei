@@ -27,6 +27,19 @@ function fetchProofreading(text) {
   });
 }
 
+function getReportMessage(record, lang = 'en') {
+  const info = record.ShitekiInfo[0];
+  const invalidWord = record.Surface[0];
+  const validWord = record.ShitekiWord.length ? `(${record.ShitekiWord[0]})` : '';
+
+  switch(lang) {
+    case 'ja':
+      return `「${invalidWord}」は${info}です。${validWord}`;
+    default:
+      return `${invalidWord} => ${info}${validWord}`
+  }
+}
+
 export default function(context, options = {}) {
   if (!process.env.YAHOO_APP_ID) {
     throw new Error(`YAHOO_APP_ID is not set.`);
@@ -48,15 +61,12 @@ export default function(context, options = {}) {
           if (json && json.ResultSet.Result) {
             json.ResultSet.Result.forEach(result => {
               const info = result.ShitekiInfo[0];
-              const invalidWord = result.Surface[0];
-              const validWord = result.ShitekiWord.length ? result.ShitekiWord[0] : '';
-
               const ignore = options.ignores[info]
-                  && find(options.ignores[info], w => w === invalidWord);
+                  && find(options.ignores[info], w => w === result.Surface[0]);
 
               if (ignore) return;
 
-              report(node, new RuleError(`${invalidWord} => ${info}|${validWord}`));
+              report(node, new RuleError(getReportMessage(result, options.lang)));
             });
           }
 
