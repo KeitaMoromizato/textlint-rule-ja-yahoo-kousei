@@ -6,12 +6,12 @@ const defaultOptions = {
   ignores:{}
 };
 
-function fetchProofreading(text) {
+function fetchProofreading(appID, text) {
   return new Promise((resolve, reject) => {
     request.post({
       url: 'http://jlp.yahooapis.jp/KouseiService/V1/kousei',
       form: {
-        appid: process.env.YAHOO_APP_ID,
+        appid: appID,
         sentence: text
       },
       json: true
@@ -41,7 +41,9 @@ function getReportMessage(record, lang = 'en') {
 }
 
 export default function(context, options = {}) {
-  if (!process.env.YAHOO_APP_ID) {
+  const appID = options.appID || process.env.YAHOO_APP_ID;
+
+  if (!appID) {
     throw new Error(`YAHOO_APP_ID is not set.`);
   }
 
@@ -53,7 +55,7 @@ export default function(context, options = {}) {
       return new Promise((resolve, reject) => {
         const paragraph = getSource(node);
 
-        fetchProofreading(paragraph).then(json => {
+        fetchProofreading(appID, paragraph).then(json => {
           if (json.Error) {
             return reject(new Error(json.Error.Message[0]));
           }
