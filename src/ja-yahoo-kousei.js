@@ -1,4 +1,6 @@
-import {assign, find} from 'lodash';
+import assign from 'lodash/assign';
+import find from 'lodash/find';
+
 import request from 'request';
 import {parseString} from 'xml2js';
 
@@ -48,7 +50,7 @@ export default function(context, options = {}) {
   }
 
   options = assign({}, defaultOptions, options);
-  let {Syntax, getSource, report, RuleError} = context;
+  const {Syntax, getSource, report, RuleError} = context;
 
   return {
     [Syntax.Paragraph](node) {
