@@ -39,12 +39,28 @@ $ textlint --rule textlint-rule-ja-yahoo-kousei README.md
 
 ## Config
 
+You can set words that ignore.
+
 ```
 {
   "rules": {
     "textlint-rule-ja-yahoo-kousei": {
       'ignores': {
         '用字':['彼方']
+      }
+    }
+  }
+}
+```
+
+or use wildcard;
+
+```
+{
+  "rules": {
+    "textlint-rule-ja-yahoo-kousei": {
+      'ignores': {
+        '用字': '*'
       }
     }
   }
