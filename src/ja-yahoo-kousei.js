@@ -42,6 +42,22 @@ function getReportMessage(record, lang = 'en') {
   }
 }
 
+function containedIgnoreList(word, info, ignores) {
+  const target = ignores[info];
+  
+  if (!target) {
+    return false;
+  }
+  else if (target === '*') {
+    return true;
+  }
+  else if (Array.isArray(target)) {
+    return !!find(target, w => w === word);
+  }
+  
+  return false;
+}
+
 export default function(context, options = {}) {
   const appID = options.appID || process.env.YAHOO_APP_ID;
 
@@ -64,11 +80,8 @@ export default function(context, options = {}) {
 
           if (json && json.ResultSet.Result) {
             json.ResultSet.Result.forEach(result => {
-              const info = result.ShitekiInfo[0];
-              const ignore = options.ignores[info]
-                  && find(options.ignores[info], w => w === result.Surface[0]);
-
-              if (ignore) return;
+              
+              if (containedIgnoreList(result.Surface[0], result.ShitekiInfo[0], options.ignores)) return;
 
               report(node, new RuleError(getReportMessage(result, options.lang)));
             });
