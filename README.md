@@ -24,7 +24,7 @@ or set in `.textlintrc`.
 ```
 {
   "rules": {
-    "textlint-rule-ja-yahoo-kousei": {
+    "ja-yahoo-kousei": {
       'appID': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     }
   }
@@ -44,7 +44,7 @@ You can set words that ignore.
 ```
 {
   "rules": {
-    "textlint-rule-ja-yahoo-kousei": {
+    "ja-yahoo-kousei": {
       'ignores': {
         '用字':['彼方']
       }
@@ -58,7 +58,7 @@ or use wildcard;
 ```
 {
   "rules": {
-    "textlint-rule-ja-yahoo-kousei": {
+    "ja-yahoo-kousei": {
       'ignores': {
         '用字': '*'
       }
